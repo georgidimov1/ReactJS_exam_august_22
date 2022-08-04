@@ -1,0 +1,13 @@
+html {
+    all: unset;
+  }
+
+  .err {
+color: red;
+  }
+
+  .background-img {
+    background-size: cover;
+    margin: auto;
+    min-height: 900px;
+  }
