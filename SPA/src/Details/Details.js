@@ -4,6 +4,7 @@ import {
         useEffect
 } from 'react'
 import services from '../services/services'
+import React from 'react';
 
 
 function Details(props){

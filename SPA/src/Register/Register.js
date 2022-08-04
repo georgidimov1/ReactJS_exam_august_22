@@ -1,5 +1,6 @@
 import { useHistory} from "react-router-dom";
 import {useState} from 'react';
+import React from 'react';
 import services from "../services/services.js";
 function Register (){
     let history = useHistory();
@@ -20,7 +21,9 @@ function Register (){
        else
        {
             services.userRegister(username, password)
-            .then((d)=>{console.log(d.json()) 
+            .then(
+                (d)=>{
+                    // console.log(d.json()) 
                 handleClick();
             })
             .catch((e)=>{throw new Error(e)});}
