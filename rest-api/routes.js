@@ -3,5 +3,5 @@ const authController = require('./controllers/authController')
 const propsController = require('./controllers/propsController')
 
 router.use('/auth', authController);
-router.use('/properties', propsController)
+router.use('/', propsController)
 module.exports = router; 

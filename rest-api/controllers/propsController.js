@@ -7,4 +7,12 @@ router.post('/property', (req, res) => {
    property.save()
    .then(property => console.log(property._id))
 });
+
+router.get('/properties', (req, res) => {
+    Property.find({})
+    .then(p => {
+        console.log(p);
+        res.status(200).json({p})
+    })
+})
 module.exports = router; 

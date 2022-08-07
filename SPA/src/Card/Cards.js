@@ -12,18 +12,19 @@ function Cards(){
   const cardsAll = useContext(DataContext);
 
 return(
-  
-  cardsAll.map(
-    (x)=>{
-      return(
+  <p>cards</p>
+  //console.log(cardsAll)
+  // cardsAll.map(
+  //   (x)=>{
+  //     return(
        
-            <Card key={x._id} {...x} />
+  //           <Card key={x._id} {...x} />
         
               
      
-      )       
-    }
-  )
+  //     )       
+  //   }
+  // )
 
 )
 

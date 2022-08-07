@@ -15,6 +15,7 @@ import MyDetails from "./UserDetails/MyDetails.js"
 import CardGrid from "./Card/CardGrid"
 import Header from './Header/Header'
 import Details from './Details/Details'
+import Add from './Add/Add'
 import ErrorBoundary from './ErrorHandler/ErrorBoundary'
 function App() {
   let authData = {'token': sessionStorage.getItem("authtoken"), 'username' : sessionStorage.getItem("username")};
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/logout" />
                 <Route path="/register" render={()=><Register/>}/>
                 <Route path="/login" render={()=><Login/>}/>
+                <Route path="/addproperty" render={(()=><Add/>)}/>
                 <Route path="/" render={()=><CardGrid {...authData}/>}/>
              </Switch>
             </ErrorBoundary>

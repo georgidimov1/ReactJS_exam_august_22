@@ -22,7 +22,7 @@ function Register (){
        {
             services.userRegister(username, password)
             .then(
-                (d)=>{
+                ()=>{
                     // console.log(d.json()) 
                 handleClick();
             })
