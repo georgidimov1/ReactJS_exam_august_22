@@ -62,10 +62,12 @@ function Add (){
                                     <input className='input' type="text" name="city" id="city" required/>
                                 </div>
                                 <div className='password'>
-                                    <input className='input' type="number" placeholder="Room number" name="rooms" required min="1" max="10"/>
+                                <label for="rooms">Number of rooms*: </label>
+                                    <input className='input' type="number" name="rooms" id="rooms" required min="1" max="10"/>
                                 </div>
                                 <div className='password'>
-                                    <input className='input' type="text" placeholder="Additional information" name="information"/>
+                                <label for="info">Additional information: </label>
+                                    <input className='input' type="text" id="info" name="info"/>
                                 </div>
                                 {/* <div className='err'>{error?'Passwords do not match':''}</div> */}
                                 <div className="p-t-10">

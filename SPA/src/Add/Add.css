@@ -2,9 +2,12 @@ select {
 margin-left: 10px;
 border-radius: 5px;
 }
-.input {
+input{
     margin-left: 10px;
     border-radius: 5px;
+}
+.input {
+
     border-width: 1px;
     border-color: black;
     background:#ecf0f1;
