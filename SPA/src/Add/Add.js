@@ -2,6 +2,7 @@ import { useHistory} from "react-router-dom";
 import {useState} from 'react';
 import React from 'react';
 import services from "../services/services.js";
+import "./Add.css"
 function Add (){
     let history = useHistory();
     let[error, setError]=useState(false)
@@ -34,25 +35,31 @@ function Add (){
                             <h2 className="title">Add Property</h2>
                             <form onSubmit={onCreateSubmitHandler}>
                             <div className='password'>
-                                <label for="type">Choose an action: </label>
-                                    <select name="type" id="type">
+                                <label for="action">Choose an action: </label>
+                                    <select name="action" id="action">
                                     <option value="sell">Sell</option>
                                     <option value="rent">Rent</option>
                                     <option value="buy">Buy</option>
                                     </select>
                             </div>
                             <div className='password'>
-                                    <label for="img">Choose a property picture: </label>
+                                    <label for="img">Choose a property picture:</label>
                                 <input type="file"
                                     id="img" name="image"
                                     accept="image/png, image/jpeg"/>
                              </div>
                                 <div className='password'>
-                                    <input className='input' type="text" placeholder="Name*" name="name" required/>
+                                <label for="type">Choose an action: </label>
+                                    <select name="type" id="type">
+                                    <option value="house">House</option>
+                                    <option value="flat">Flat</option>
+                                    <option value="room">Room</option>
+                                    </select>
                                 </div>
-                      
+                                
                                 <div className='password'>
-                                    <input className='input' type="text" placeholder="City*" name="city" required/>
+                                    <label for="city">City*: </label>
+                                    <input className='input' type="text" name="city" id="city" required/>
                                 </div>
                                 <div className='password'>
                                     <input className='input' type="number" placeholder="Room number" name="rooms" required min="1" max="10"/>

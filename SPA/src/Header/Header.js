@@ -55,7 +55,9 @@ function Header(props){
                      <p className="nav" align="right"><Link to="/logout" onClick={onClickLogoutHandler}>Logout</Link></p>
              </nav>:
              <nav>
-                     <p className="nav"><Link to="/">Home</Link> </p>
+                     <p className="nav"><Link to="/">Home</Link></p>
+                     <p></p>
+                     <p></p>
                      <p className="nav"><Link to="/register">Register</Link> </p>
                      <p className="nav"><Link to="/login" >Login</Link></p>
              </nav>
