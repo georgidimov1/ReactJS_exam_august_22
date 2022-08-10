@@ -17,14 +17,8 @@ function Header(props){
    }
     function onClickLogoutHandler(){
         services.userLogout()
-        .then(()=>{
-           sessionStorage.clear();
-         })
-        .then(()=>{
-            setAuth(false)
-            handleClick() 
-        })
-        .catch((e)=>{throw new Error(e)})
+        setAuth(false)
+        handleClick() 
     }
     
     useEffect(() => {

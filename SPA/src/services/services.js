@@ -2,6 +2,7 @@ import {get,post} from "./restService.js"
 
 let services = {
     postData (data){
+        console.log(data)
         return post("properties", data)
     },
     getAll(){
@@ -17,6 +18,7 @@ let services = {
         return post("auth/register", { username, password });
     },
     userLogout(){
+        sessionStorage.clear();
         return console.log('LOGOUT')}    
       
     ,

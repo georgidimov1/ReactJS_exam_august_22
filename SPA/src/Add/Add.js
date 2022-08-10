@@ -8,33 +8,34 @@ function Add (){
     let[error, setError]=useState(false)
 
     function handleClick() {
-      history.push("/login");
+      history.push("/");
     }
     function onCreateSubmitHandler(e){
         e.preventDefault();
-        const username = e.target.username.value;
-        const password = e.target.password.value;
-        const rePassword = e.target.rePassword.value;
-        
-        if(password!==rePassword){
-             return (setError(true))
+        let propertyData = {
+            'action': e.target.action.value,
+            'image': e.target.image.value,
+            'type': e.target.type.value,
+            'city': e.target.city.value,
+            'rooms': e.target.rooms.value,
+            'info': e.target.info.value,
+            'price': e.target.price.value,
+            'owner': sessionStorage.getItem("userId")
         }
-       else
-       {
-            services.userRegister(username, password)
+        console.log(propertyData)
+
+            services.postData(propertyData)
             .then(
                 ()=>{
-                    // console.log(d.json()) 
-                handleClick();
+                 handleClick();
             })
             .catch((e)=>{throw new Error(e)});}
-        }
-        
+
   return ( 
                          <div className="body">
-                            <h2 className="title">Add Property</h2>
+                            <h2 className="title">Add A Property</h2>
                             <form onSubmit={onCreateSubmitHandler}>
-                            <div className='password'>
+                            <div>
                                 <label for="action">Choose an action: </label>
                                     <select name="action" id="action">
                                     <option value="sell">Sell</option>
@@ -42,14 +43,14 @@ function Add (){
                                     <option value="buy">Buy</option>
                                     </select>
                             </div>
-                            <div className='password'>
+                            <div>
                                     <label for="img">Choose a property picture:</label>
                                 <input type="file"
                                     id="img" name="image"
                                     accept="image/png, image/jpeg"/>
                              </div>
-                                <div className='password'>
-                                <label for="type">Choose an action: </label>
+                                <div>
+                                <label for="type">Choose type: </label>
                                     <select name="type" id="type">
                                     <option value="house">House</option>
                                     <option value="flat">Flat</option>
@@ -57,17 +58,21 @@ function Add (){
                                     </select>
                                 </div>
                                 
-                                <div className='password'>
+                                <div>
                                     <label for="city">City*: </label>
                                     <input className='input' type="text" name="city" id="city" required/>
                                 </div>
-                                <div className='password'>
+                                <div>
                                 <label for="rooms">Number of rooms*: </label>
                                     <input className='input' type="number" name="rooms" id="rooms" required min="1" max="10"/>
                                 </div>
-                                <div className='password'>
+                                <div>
                                 <label for="info">Additional information: </label>
-                                    <input className='input' type="text" id="info" name="info"/>
+                                    <textarea className='input' type="text" id="info" name="info"/>
+                                </div>
+                                <div>
+                                <label for="price">Price: </label>
+                                    <input className='input' type="number" name="price" id="price"/>
                                 </div>
                                 {/* <div className='err'>{error?'Passwords do not match':''}</div> */}
                                 <div className="p-t-10">
