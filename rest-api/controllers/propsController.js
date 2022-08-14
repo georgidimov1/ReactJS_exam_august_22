@@ -9,10 +9,9 @@ router.post('/properties', (req, res) => {
 });
 
 router.get('/properties', (req, res) => {
-    Property.find({})
+    Property.find()
     .then(p => {
-        console.log(p);
-        res.status(200).json({p})
+         res.status(200).json(p)
     })
 })
 module.exports = router; 

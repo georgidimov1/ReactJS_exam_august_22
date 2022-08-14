@@ -36,7 +36,7 @@ function Header(props){
             <a href="/">
                 <img src="homeregular_106344.png" alt="home" width="50" height="50" />
             </a>
-            <h1>Bulgarian Properties</h1>
+            <em className="title main"> Bulgarian Properties</em>
         </p>
     </div>
     <div>

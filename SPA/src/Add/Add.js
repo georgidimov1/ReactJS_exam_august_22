@@ -25,10 +25,7 @@ function Add (){
         console.log(propertyData)
 
             services.postData(propertyData)
-            .then(
-                ()=>{
-                 handleClick();
-            })
+            .then(()=>{ history.push("/");})
             .catch((e)=>{throw new Error(e)});}
 
   return ( 

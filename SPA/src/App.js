@@ -18,7 +18,7 @@ import Details from './Details/Details'
 import Add from './Add/Add'
 import ErrorBoundary from './ErrorHandler/ErrorBoundary'
 function App() {
-  let authData = {'token': sessionStorage.getItem("authtoken"), 'username' : sessionStorage.getItem("username")};
+  let authData = {'token': sessionStorage.getItem("authtoken"), 'username' : sessionStorage.getItem("username"), '_id' : sessionStorage.getItem("userId")};
  
   return (
       <LoginContext.Provider value={authData}>
