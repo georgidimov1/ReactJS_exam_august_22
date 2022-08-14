@@ -1,15 +1,12 @@
 import { useHistory} from "react-router-dom";
-import {useState} from 'react';
 import React from 'react';
 import services from "../services/services.js";
 import "./Add.css"
 function Add (){
-    let history = useHistory();
-    let[error, setError]=useState(false)
-
+    const  history = useHistory();
     function handleClick() {
-      history.push("/");
-    }
+        history.push("/");
+      }
     function onCreateSubmitHandler(e){
         e.preventDefault();
         let propertyData = {
@@ -25,7 +22,10 @@ function Add (){
         console.log(propertyData)
 
             services.postData(propertyData)
-            .then(()=>{ history.push("/");})
+            .then(()=>{
+                handleClick()
+                console.log('postData')
+            })
             .catch((e)=>{throw new Error(e)});}
 
   return ( 
@@ -33,7 +33,7 @@ function Add (){
                             <h2 className="title">Add A Property</h2>
                             <form onSubmit={onCreateSubmitHandler}>
                             <div>
-                                <label for="action">Choose an action: </label>
+                                <label htmlFor="action">Choose an action: </label>
                                     <select name="action" id="action">
                                     <option value="sell">Sell</option>
                                     <option value="rent">Rent</option>
@@ -41,13 +41,12 @@ function Add (){
                                     </select>
                             </div>
                             <div>
-                                    <label for="img">Choose a property picture:</label>
-                                <input type="file"
-                                    id="img" name="image"
-                                    accept="image/png, image/jpeg"/>
-                             </div>
+                                    <label htmlFor="image">Choose a property picture:</label>
+                                    <input type="file" id="image" 
+                                    name="image" accept="image/png, image/jpeg" required/>
+                            </div>
                                 <div>
-                                <label for="type">Choose type: </label>
+                                <label htmlFor="type">Choose type: </label>
                                     <select name="type" id="type">
                                     <option value="house">House</option>
                                     <option value="flat">Flat</option>
@@ -56,22 +55,21 @@ function Add (){
                                 </div>
                                 
                                 <div>
-                                    <label for="city">City*: </label>
+                                    <label htmlFor="city">City*: </label>
                                     <input className='input' type="text" name="city" id="city" required/>
                                 </div>
                                 <div>
-                                <label for="rooms">Number of rooms*: </label>
+                                <label htmlFor="rooms">Number of rooms*: </label>
                                     <input className='input' type="number" name="rooms" id="rooms" required min="1" max="10"/>
                                 </div>
                                 <div>
-                                <label for="info">Additional information: </label>
+                                <label htmlFor="info">Additional information: </label>
                                     <textarea className='input' type="text" id="info" name="info"/>
                                 </div>
                                 <div>
-                                <label for="price">Price: </label>
+                                <label htmlFor="price">Price: </label>
                                     <input className='input' type="number" name="price" id="price"/>
                                 </div>
-                                {/* <div className='err'>{error?'Passwords do not match':''}</div> */}
                                 <div className="p-t-10">
                                     <button className="btn">Submit</button>
                                 </div>

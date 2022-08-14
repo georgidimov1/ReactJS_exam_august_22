@@ -1,7 +1,7 @@
 .footer {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 14px;
-    position: fixed;
+    position:relative;
     right: 0;
     width: 100%;
     color: rgb(15, 15, 15);

@@ -12,6 +12,7 @@ nav {
 	align-items: center;
 	justify-content: center;
 	justify-items: center;
+	white-space: nowrap ;
 }
 nav p.nav {
 	line-height: 50px;
@@ -21,9 +22,10 @@ nav p.nav {
 	position: relative;
 	z-index: 1;
 	text-decoration: none;
-	text-transform: uppercase;
 	text-align: center;
 	cursor: pointer;
+	border: #fcfdfb;
+	border-width: 1px;
 }
 nav .animation {
 	position: absolute;

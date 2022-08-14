@@ -22,6 +22,9 @@ let services = {
         return console.log('LOGOUT')}    
       
     ,
+    deleteOne(_id){
+        return get(`properties/delete/${_id}`)},
+
     sessionStore(data) {
         sessionStorage.setItem("authtoken", data.authtoken)
         sessionStorage.setItem("username", data.username)

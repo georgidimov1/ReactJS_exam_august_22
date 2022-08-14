@@ -37,6 +37,8 @@ function App() {
                 <Route path="/register" render={()=><Register/>}/>
                 <Route path="/login" render={()=><Login/>}/>
                 <Route path="/addproperty" render={(()=><Add/>)}/>
+                <Route path="/myproperties/:id" render={()=><CardGrid {...authData}/>}/>
+                <Route path="/properties/delete/:id"/>
                 <Route path="/" render={()=><CardGrid {...authData}/>}/>
              </Switch>
             </ErrorBoundary>

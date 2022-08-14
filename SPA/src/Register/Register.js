@@ -3,8 +3,8 @@ import {useState} from 'react';
 import React from 'react';
 import services from "../services/services.js";
 function Register (){
-    let history = useHistory();
-    let[error, setError]=useState(false)
+    const  history = useHistory();
+    const [error, setError]=useState(false)
 
     function handleClick() {
       history.push("/login");

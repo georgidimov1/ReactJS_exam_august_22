@@ -10,6 +10,10 @@
 * {
   box-sizing: border-box;
 }
+a {
+  color: navy;
+}
+
 .gridMain {
   display: grid;
   position: relative;
@@ -37,9 +41,9 @@
   display: grid;
   position: relative;
   grid-template-columns: 300px;
-  grid-template-rows: 210px 210px 80px;
+  grid-template-rows: 210px 120px 80px;
   grid-template-areas: "image" "text" "stats";
-  height: 509px;
+  height: 417px;
   width: fit-content;
 	z-index: 1;
 	text-decoration: none;
@@ -98,10 +102,12 @@
   justify-content: center;
   flex-direction: column;
   color: white;
+  height: 80px;
 }
 .card-stats .border {
   border-left: 1px solid rgb(172, 26, 87);
   border-right: 1px solid rgb(172, 26, 87);
+  height: 80px;
 }
 .card-stats .value{
   font-size:22px;
@@ -116,7 +122,7 @@
   text-transform: uppercase;
 }
 .card:hover {
-  transform: scale(1.005);
+  transform: scale(1.02);
   box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
 }
 

@@ -5,11 +5,18 @@ router.post('/properties', (req, res) => {
     console.log(req.body)
    let property = new Property(req.body)
    property.save()
-   .then(property => console.log(property._id))
+   .then(p => {
+    res.status(200).json(p)})
 });
 
 router.get('/properties', (req, res) => {
     Property.find()
+    .then(p => {
+         res.status(200).json(p)
+    })
+})
+router.get('/properties/delete/:id', (req, res) => {
+    Property.findByIdAndDelete(req.params.id)
     .then(p => {
          res.status(200).json(p)
     })

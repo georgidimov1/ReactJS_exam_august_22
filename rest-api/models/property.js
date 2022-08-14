@@ -3,7 +3,10 @@ const { Schema } = mongoose;
 
 const propertySchema = new Schema({
     action: {type: String, required: true},
-    image:{type: String, },
+    image: {
+        data: Buffer,
+        contentType: String
+    },
     type: {type: String, required: true},
     city: {type: String, required: true},
     rooms: { type: Number, min: 1, max: 10 }, 
