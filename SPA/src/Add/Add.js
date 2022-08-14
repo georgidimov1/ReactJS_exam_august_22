@@ -24,7 +24,6 @@ function Add (){
             services.postData(propertyData)
             .then(()=>{
                 handleClick()
-                console.log('postData')
             })
             .catch((e)=>{throw new Error(e)});}
 
