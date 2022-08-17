@@ -15,6 +15,12 @@ router.get('/properties', (req, res) => {
          res.status(200).json(p)
     })
 })
+router.get('/properties/:id', (req, res) => {
+    Property.findById(req.params.id)
+    .then(p => {
+         res.status(200).json(p)
+    })
+})
 router.get('/properties/delete/:id', (req, res) => {
     Property.findByIdAndDelete(req.params.id)
     .then(p => {

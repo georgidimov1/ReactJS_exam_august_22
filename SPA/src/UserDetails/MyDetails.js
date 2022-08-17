@@ -1,5 +1,5 @@
 import './myDetails.css';
-import React, { useEffect, useState} from 'react';
+import React, { useEffect} from 'react';
 import services from "../services/services.js"
 import { useHistory } from "react-router-dom";
 import getZodiacSign from "../services/getZodiacsign"
@@ -54,18 +54,6 @@ function MyDetails (){
                                 <div className='password'>
                                     <input className="input" type="datetime-local" name="birthday" required/>
                                     <i className="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                </div>
-                                <div className='password' >
-                                    <div className="rs-select2 js-select-simple select--no-search">
-                                    <label>Select a Gender: </label>
-                                        <select name="gender">
-                                            <option disabled >Gender</option>
-                                            <option defaultValue="male">Male</option>
-                                            <option defaultValue="female">Female</option>
-                                            <option defaultValue="other">Other</option>
-                                        </select>
-                                        <div className="select-dropdown"></div>
-                                    </div>
                                 </div>
                                 <div className='password'>
                                     <input className="input" type="text" placeholder="Phone" name="phone"/>

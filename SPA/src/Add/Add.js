@@ -5,10 +5,7 @@ import "./Add.css"
 function Add (){
     const userCurrent = sessionStorage.getItem("userId")
     const  history = useHistory();
-    function handleClick() {
-        history.push("/");
-      }
-      const params = useParams()
+    const params = useParams()
     
         const [cardOne, setCardOne] = useState([]);
         useEffect(() => {
@@ -46,7 +43,7 @@ function Add (){
             else {
                 services.postData(propertyData)
                 .then(()=>{
-                    handleClick()
+                    history.push(`/myproperties/${userCurrent}`)
                 })
                 .catch((e)=>{throw new Error(e)});
             }
@@ -56,7 +53,7 @@ function Add (){
 
   return ( 
                          <div className="body">
-                            <h2 className="title">Add A Property</h2>
+                            <h2 className="title">{params.id?"Edit":"Add"} A Property</h2>
                             <form onSubmit={onCreateSubmitHandler}>
                             <div>
                                 <label htmlFor="action">Choose an action: </label>
@@ -69,7 +66,7 @@ function Add (){
                             <div>
                                     <label htmlFor="image">Choose a property picture:</label>
                                     <input type="text" id="image" 
-                                    name="image" accept="image/png, image/jpeg" defaultValue={cardOne.image} required/>
+                                    name="image" accept="image/png, image/jpeg" selected={cardOne.image}/>
                             </div>
                                 <div>
                                 <label htmlFor="type">Choose type: </label>

@@ -23,7 +23,7 @@ function Card(props){
          <div className="card-text">
              <span className="value">{props.city.toUpperCase()}</span>
              <h2>{props.action.toUpperCase()}</h2>
-             <Link to={`/properties/${props._id}`}>Click for info</Link>
+             <Link to={`/properties/details/${props._id}`}>Click for info</Link>
          </div>
          <div className="card-stats">
              <div className="stat">
