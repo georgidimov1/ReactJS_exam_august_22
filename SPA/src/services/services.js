@@ -24,6 +24,9 @@ let services = {
     ,
     deleteOne(_id){
         return get(`properties/delete/${_id}`)},
+        
+    editOne(_id, data){
+            return post(`properties/edit/${_id}`, data)},
 
     sessionStore(data) {
         sessionStorage.setItem("authtoken", data.authtoken)

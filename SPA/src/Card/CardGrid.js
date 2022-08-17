@@ -6,7 +6,7 @@ import './Cards.css'
 
 function CardGrid(props) {
 const params = useParams()
-console.log(params.id)
+//console.log(params.id)
  const [cardsData, setCardsData] = useState([]);
         useEffect(() => {
               services.getAll()

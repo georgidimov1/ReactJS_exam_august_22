@@ -1,15 +1,31 @@
-import { useHistory} from "react-router-dom";
-import React from 'react';
+import { useHistory, useParams} from "react-router-dom";
+import {React, useEffect, useState} from 'react';
 import services from "../services/services.js";
 import "./Add.css"
 function Add (){
+    const userCurrent = sessionStorage.getItem("userId")
     const  history = useHistory();
     function handleClick() {
         history.push("/");
       }
+      const params = useParams()
+    
+        const [cardOne, setCardOne] = useState([]);
+        useEffect(() => {
+            if(params.id){
+            services.editOne(params.id)
+              .then(res=>{
+                setCardOne(res);
+                          }
+                )
+              .catch((e)=>{throw new Error(e)});
+            } else {console.log('nqma')}
+        }, [params.id]);
+     //console.log(cardOne)
+
     function onCreateSubmitHandler(e){
         e.preventDefault();
-        let propertyData = {
+                let propertyData = {
             'action': e.target.action.value,
             'image': e.target.image.value,
             'type': e.target.type.value,
@@ -19,13 +35,24 @@ function Add (){
             'price': e.target.price.value,
             'owner': sessionStorage.getItem("userId")
         }
-        console.log(propertyData)
 
-            services.postData(propertyData)
+         if(params.id){
+            services.editOne(params.id, propertyData)
             .then(()=>{
-                handleClick()
+                history.push(`/myproperties/${userCurrent}`)
             })
-            .catch((e)=>{throw new Error(e)});}
+            .catch((e)=>{throw new Error(e)})
+             }
+            else {
+                services.postData(propertyData)
+                .then(()=>{
+                    handleClick()
+                })
+                .catch((e)=>{throw new Error(e)});
+            }
+        }
+
+          
 
   return ( 
                          <div className="body">
@@ -33,7 +60,7 @@ function Add (){
                             <form onSubmit={onCreateSubmitHandler}>
                             <div>
                                 <label htmlFor="action">Choose an action: </label>
-                                    <select name="action" id="action">
+                                    <select name="action" id="action" defaultValue={cardOne.action}>
                                     <option value="sell">Sell</option>
                                     <option value="rent">Rent</option>
                                     <option value="buy">Buy</option>
@@ -41,12 +68,12 @@ function Add (){
                             </div>
                             <div>
                                     <label htmlFor="image">Choose a property picture:</label>
-                                    <input type="file" id="image" 
-                                    name="image" accept="image/png, image/jpeg" required/>
+                                    <input type="text" id="image" 
+                                    name="image" accept="image/png, image/jpeg" defaultValue={cardOne.image} required/>
                             </div>
                                 <div>
                                 <label htmlFor="type">Choose type: </label>
-                                    <select name="type" id="type">
+                                    <select name="type" id="type" defaultValue={cardOne.type}>
                                     <option value="house">House</option>
                                     <option value="flat">Flat</option>
                                     <option value="room">Room</option>
@@ -55,19 +82,19 @@ function Add (){
                                 
                                 <div>
                                     <label htmlFor="city">City*: </label>
-                                    <input className='input' type="text" name="city" id="city" required/>
+                                    <input className='input' type="text" name="city" defaultValue={cardOne.city} id="city" required/>
                                 </div>
                                 <div>
                                 <label htmlFor="rooms">Number of rooms*: </label>
-                                    <input className='input' type="number" name="rooms" id="rooms" required min="1" max="10"/>
+                                    <input className='input' type="number" name="rooms" id="rooms" defaultValue={cardOne.rooms} required min="1" max="10"/>
                                 </div>
                                 <div>
                                 <label htmlFor="info">Additional information: </label>
-                                    <textarea className='input' type="text" id="info" name="info"/>
+                                    <textarea className='input' type="text" id="info" name="info" defaultValue={cardOne.info}/>
                                 </div>
                                 <div>
                                 <label htmlFor="price">Price: </label>
-                                    <input className='input' type="number" name="price" id="price"/>
+                                    <input className='input' type="number" name="price" id="price" defaultValue={cardOne.price}/>
                                 </div>
                                 <div className="p-t-10">
                                     <button className="btn">Submit</button>

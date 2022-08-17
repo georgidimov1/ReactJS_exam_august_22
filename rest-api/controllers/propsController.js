@@ -21,4 +21,16 @@ router.get('/properties/delete/:id', (req, res) => {
          res.status(200).json(p)
     })
 })
+router.get('/properties/edit/:id', (req, res) => {
+    Property.findById(req.params.id)
+    .then(p => {
+         res.status(200).json(p)
+    })
+})
+router.post('/properties/edit/:id', (req, res) => {
+    Property.findByIdAndUpdate(req.params.id, req.body)
+    .then(p => {
+         res.status(200).json(p)
+    })
+})
 module.exports = router; 

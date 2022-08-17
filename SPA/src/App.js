@@ -39,6 +39,7 @@ function App() {
                 <Route path="/addproperty" render={(()=><Add/>)}/>
                 <Route path="/myproperties/:id" render={()=><CardGrid {...authData}/>}/>
                 <Route path="/properties/delete/:id"/>
+                <Route path="/properties/edit/:id" render={(()=><Add/>)}/>
                 <Route path="/" render={()=><CardGrid {...authData}/>}/>
              </Switch>
             </ErrorBoundary>
