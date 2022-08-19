@@ -9,7 +9,8 @@ const propertySchema = new Schema({
     rooms: { type: Number, min: 1, max: 10 }, 
     info: {type: String},
     price: {type: String},
-    owner: {type: String}
+    owner: {type: String},
+    users:[{type: mongoose.Types.ObjectId, ref: "User"}] 
 })
 
 

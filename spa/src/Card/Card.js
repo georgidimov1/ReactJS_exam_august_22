@@ -17,13 +17,17 @@ function Card(props){
         .catch((e)=>{throw new Error(e)});
     }
 
+    function handleLikeClick (){
+        console.log(props._id)
+    }
+
  return (
      <div className="card column">
          <img className="card-image" alt= "" src={props.image}></img>
          <div className="card-text">
              <span className="value">{props.city.toUpperCase()}</span>
              <h2>{props.action.toUpperCase()}</h2>
-             <Link to={`/properties/details/${props._id}`}>Click for info</Link>
+             
          </div>
          <div className="card-stats">
              <div className="stat">
@@ -37,8 +41,18 @@ function Card(props){
                         
              </div>
              <div className="stat border">
-                 <div className="value">5123</div>
-                 <div className="type">views</div>
+                 {editDeleteSet?
+                    <span>
+                        <div className="value">5 {props.likes}</div>
+                        <div className="value">likes</div>
+                    </span>
+                              :
+                isUser?
+                 <button className='btn like' onClick={handleLikeClick}>Like</button>
+                    :
+                    <Link to={`/properties/details/${props._id}`}>Click for info</Link>
+
+                 }
              </div>
              <div className="stat">
             {editDeleteSet?
@@ -48,7 +62,6 @@ function Card(props){
                     <Link to={`/properties/edit/${props._id}`}><strong>EDIT</strong></Link>
              </span>
              :
-             
              <div className="value">Price: {props.price}</div>
              }
              </div>

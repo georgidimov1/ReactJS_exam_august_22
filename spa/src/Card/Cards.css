@@ -1,20 +1,28 @@
-/* body {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: aliceblue;
-  overflow: hidden;
-} */
 * {
   box-sizing: border-box;
 }
 a {
-  color:black;
+  color:white;
 }
 a:hover {
   color: #c0c0c0;
+}
+.btn.like {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 60px;
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 0px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color:white;
+  background-color: #2980b9;
+  border-color: #34495e;
+}
+.border {
+  border: 1px solid #e63b7a!important;
 }
 
 .gridMain {
@@ -26,7 +34,27 @@ a:hover {
   justify-content: space-between;
 
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1260px) {
+  .gridMain {
+    display: grid;
+    position: relative;
+    grid-template-rows: 520px;
+    width: 100%;
+    grid-template-columns: 33% 33% 33%;
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width: 960px) {
+  .gridMain {
+    display: grid;
+    position: relative;
+    grid-template-rows: 520px;
+    width: 100%;
+    grid-template-columns: 50% 50%;
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width: 660px) {
   .gridMain {
     width: 100%;
     display: block;
@@ -73,6 +101,8 @@ a:hover {
   background-size: cover;
   width:auto;
   height: 210px;
+  display:block;
+  margin:auto;
 }
 
 .card-text {

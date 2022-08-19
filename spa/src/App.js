@@ -32,17 +32,21 @@ function App() {
              <Header {...authData}/>
              <ErrorBoundary>
                <Switch>
-                <Route path="/user/details/:id" render={props => <Details {...props} {...authData} />}/>
-                <Route path="/user" render={()=><MyDetails/>}/>
-                <Route path="/logout" />
-                <Route path="/register" render={()=><Register/>}/>
-                <Route path="/login" render={()=><Login/>}/>
-                <Route path="/addproperty" render={(()=><Add/>)}/>
-                <Route path="/myproperties/:id" render={()=><CardGrid {...authData}/>}/>
-                <Route path="/properties/delete/:id"/>
-                <Route path="/properties/edit/:id" render={(()=><Add/>)}/>
-                <Route path="/properties/details/:id" render={(()=><Info {...authData}/>)}/>
-                <Route path="/" render={()=><CardGrid {...authData}/>}/>
+                <Route exact path="/user/details/:id" render={props => <Details {...props} {...authData} />}/>
+                <Route exact path="/user" render={()=><MyDetails/>}/>
+                <Route exact path="/logout" />
+                <Route exact path="/register" render={()=><Register/>}/>
+                <Route exact path="/login" render={()=><Login/>}/>
+                <Route exact path="/addproperty" render={(()=><Add/>)}/>
+                <Route exact path="/myproperties/:id" render={()=><CardGrid {...authData}/>}/>
+                <Route exact path="/properties/delete/:id"/>
+                <Route exact path="/properties/edit/:id" render={(()=><Add/>)}/>
+                <Route exact path="/properties/details/:id" render={(()=><Info {...authData}/>)}/>
+                <Route exact path="/" render={()=><CardGrid {...authData}/>}/>
+                <Route path="*" render={(()=>
+                <div style={
+                  {"font-family":"DejaVu Sans Mono, monospace","padding-top":"20%","padding-bottom":"20%", "font-size":"50px","color":"#34495e","text-align":"center"}
+                }>404 PAGE NOT FOUND</div>)}/>
              </Switch>
             </ErrorBoundary>
         </Router>
