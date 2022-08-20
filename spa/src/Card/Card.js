@@ -1,10 +1,10 @@
 import './Cards.css'
 import {Link, useHistory} from 'react-router-dom'
-import React from 'react'
+import {React} from 'react'
 import services from '../services/services'
 
 function Card(props){
-    const history = useHistory()
+     const history = useHistory()
     function handleClick() {
         history.push("/");
       }
@@ -17,8 +17,16 @@ function Card(props){
         .catch((e)=>{throw new Error(e)});
     }
 
-    function handleLikeClick (){
-        console.log(props._id)
+    function onClickLikeHandler (){
+        services.getOne(props._id)
+        .then(a => {    
+            if(!a.users.includes(isUser)){
+            services.postLikes(isUser,props._id)
+            .then(() =>{handleClick()})
+            .catch((e)=>{throw new Error(e)});
+        }}
+        )
+        
     }
 
  return (
@@ -27,7 +35,11 @@ function Card(props){
          <div className="card-text">
              <span className="value">{props.city.toUpperCase()}</span>
              <h2>{props.action.toUpperCase()}</h2>
-             
+             {isUser?
+                <Link style={{color:"black"}} to={`/properties/details/${props._id}`}>Click for info</Link>
+                 :
+                <span></span>
+                }
          </div>
          <div className="card-stats">
              <div className="stat">
@@ -38,17 +50,18 @@ function Card(props){
                     <div className="value">{props.rooms} rooms</div>
                     <div className="value">{props.type.toUpperCase()}</div>
                 </span>}
+                
                         
              </div>
              <div className="stat border">
                  {editDeleteSet?
                     <span>
-                        <div className="value">5 {props.likes}</div>
+                        <div className="value">{props.users.length}</div>
                         <div className="value">likes</div>
                     </span>
                               :
                 isUser?
-                 <button className='btn like' onClick={handleLikeClick}>Like</button>
+                 <button className='btn like'><Link to={`/properties/${props._id}/${isUser}`} onClick={onClickLikeHandler}>Like</Link></button>
                     :
                     <Link to={`/properties/details/${props._id}`}>Click for info</Link>
 

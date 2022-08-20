@@ -11,3 +11,14 @@ color: red;
     margin: auto;
     min-height: 900px;
   }
+
+  #pageNotFound {
+  
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        padding-top:10%;
+        padding-bottom:20%; 
+        font-size:50px;
+        color:#34495e;
+        text-align:center;
+
+  }

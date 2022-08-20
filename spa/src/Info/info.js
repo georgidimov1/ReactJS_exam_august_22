@@ -13,6 +13,7 @@ function Info(props){
     .then(x => updateOne(x))
     .catch((e)=>{throw new Error(e)});
     }, [params.id])
+
     return(
     <div className="body info">
     <h2 className="title">Additional information</h2>
@@ -22,9 +23,7 @@ function Info(props){
             <p className='input' type="number" name="price" id="price">{one.info}</p>
         </div>
         <div className="p-t-10">
-            <button className="btn" htmlFor="price">
-            <Link to={`/`} id="price">Close</Link>
-            </button>
+            <Link className="btn" to={`/`} id="close">Close</Link>
         </div>
     </div>
 )

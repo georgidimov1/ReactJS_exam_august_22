@@ -17,6 +17,7 @@ import Header from './Header/Header'
 import Details from './Details/Details'
 import Add from './Add/Add'
 import Info from './Info/info';
+import Infopage from './Infopage/Infopage.js';
 import ErrorBoundary from './ErrorHandler/ErrorBoundary'
 function App() {
   let authData = {'token': sessionStorage.getItem("authtoken"), 'username' : sessionStorage.getItem("username"), '_id' : sessionStorage.getItem("userId")};
@@ -42,11 +43,10 @@ function App() {
                 <Route exact path="/properties/delete/:id"/>
                 <Route exact path="/properties/edit/:id" render={(()=><Add/>)}/>
                 <Route exact path="/properties/details/:id" render={(()=><Info {...authData}/>)}/>
+                <Route exact path="/properties/:id/:id" render={(()=><Infopage {...authData}/>)}/>
                 <Route exact path="/" render={()=><CardGrid {...authData}/>}/>
                 <Route path="*" render={(()=>
-                <div style={
-                  {"font-family":"DejaVu Sans Mono, monospace","padding-top":"20%","padding-bottom":"20%", "font-size":"50px","color":"#34495e","text-align":"center"}
-                }>404 PAGE NOT FOUND</div>)}/>
+                <div id="pageNotFound">404<br/>PAGE NOT FOUND</div>)}/>
              </Switch>
             </ErrorBoundary>
         </Router>

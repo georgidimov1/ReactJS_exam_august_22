@@ -27,15 +27,18 @@ let services = {
         
     editOne(_id, data){
             return post(`properties/edit/${_id}`, data)},
+    getUser(_id){
+        return get(`auth/user/${_id}`)
+    },
 
     sessionStore(data) {
         sessionStorage.setItem("authtoken", data.authtoken)
         sessionStorage.setItem("username", data.username)
         sessionStorage.setItem("userId", data.userId)
-   }
-//    postLikes (_id, data){
-//     return put(kinveyModule,`dating/${_id}`, data, type)
-//    }
+   },
+    postLikes (idUser, idProperty){
+        return get(`properties/${idProperty}/${idUser}`)
+      }
 }
 
     

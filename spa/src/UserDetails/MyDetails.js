@@ -48,12 +48,7 @@ function MyDetails (){
                             <h2 className="title">{username}'s Registration Info</h2>
                             <form onSubmit={onCreateSubmitHandler}>
                                 <div className='password'>
-                                <label htmlFor="picture">Select a Picture:</label>
-                                <input className="input" id="picture" type="picture" name="myImage" />
-                                </div>
-                                <div className='password'>
-                                    <input className="input" type="datetime-local" name="birthday" required/>
-                                    <i className="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                    <input className="input" type="text" placeholder="ivanov@ivanov.com" name="mail" required/>
                                 </div>
                                 <div className='password'>
                                     <input className="input" type="text" placeholder="Phone" name="phone"/>

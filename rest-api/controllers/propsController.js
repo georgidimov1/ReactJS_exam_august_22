@@ -1,5 +1,7 @@
 const router = require('express').Router()
 const Property = require ('../models/property')
+const User = require ('../models/user')
+
 
 router.post('/properties', (req, res) => {
     console.log(req.body)
@@ -39,4 +41,16 @@ router.post('/properties/edit/:id', (req, res) => {
          res.status(200).json(p)
     })
 })
+
+router.get('/properties/:id/:idUser', async (req, res) => {
+    let property = await Property.findById(req.params.id)
+    let user = await User.findById(req.params.idUser)
+    property.users.push(user)
+    property.save()
+    .then(p => {
+        res.status(200).json(p)
+   })
+})
+
+
 module.exports = router; 

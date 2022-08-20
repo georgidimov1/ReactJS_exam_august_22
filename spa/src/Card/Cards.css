@@ -99,10 +99,11 @@ a:hover {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   background-size: cover;
-  width:auto;
+  width: 300px;
   height: 210px;
   display:block;
   margin:auto;
+  
 }
 
 .card-text {

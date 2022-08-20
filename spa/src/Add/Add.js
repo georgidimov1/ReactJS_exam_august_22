@@ -66,7 +66,7 @@ function Add (){
                             <div>
                                     <label htmlFor="image">Choose a property picture:</label>
                                     <input type="text" id="image" 
-                                    name="image" accept="image/png, image/jpeg" selected={cardOne.image}/>
+                                    name="image" accept="image/png, image/jpeg" defaultValue={cardOne.image}/>
                             </div>
                                 <div>
                                 <label htmlFor="type">Choose type: </label>

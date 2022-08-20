@@ -45,7 +45,7 @@ function Header(props){
                      <p className="nav"><Link to="/">Home</Link></p>
                      <p className="nav"><Link to="/user" >Hello, {props.username}</Link> </p>
                      <p className="nav"><Link to={`/myproperties/${props._id}`}>My ads</Link></p>
-                     <p className="nav"><Link to="/addproperty">Add</Link></p>
+                     <p className="nav"><Link to="/addproperty">Add </Link></p>
                      <p className="nav" align="right"><Link to="/logout" onClick={onClickLogoutHandler}>Logout</Link></p>
              </nav>:
              <nav>
