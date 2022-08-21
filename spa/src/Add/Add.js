@@ -6,9 +6,11 @@ function Add (){
     const userCurrent = sessionStorage.getItem("userId")
     const  history = useHistory();
     const params = useParams()
-    
-        const [cardOne, setCardOne] = useState([]);
-        useEffect(() => {
+    const [cardOne, setCardOne] = useState([]);
+    const [action, setAction] = useState(cardOne.action);
+    const [type, setType] = useState(cardOne.image);
+
+    useEffect(() => {
             if(params.id){
             services.editOne(params.id)
               .then(res=>{
@@ -18,7 +20,6 @@ function Add (){
               .catch((e)=>{throw new Error(e)});
             } else {console.log('nqma')}
         }, [params.id]);
-     //console.log(cardOne)
 
     function onCreateSubmitHandler(e){
         e.preventDefault();
@@ -49,15 +50,13 @@ function Add (){
             }
         }
 
-          
-
   return ( 
                          <div className="body">
                             <h2 className="title">{params.id?"Edit":"Add"} A Property</h2>
                             <form onSubmit={onCreateSubmitHandler}>
                             <div>
                                 <label htmlFor="action">Choose an action: </label>
-                                    <select name="action" id="action" defaultValue={cardOne.action}>
+                                    <select name="action" id="action" value = {action} onChange = {(e)=> setAction(e.target.value)}>
                                     <option value="sell">Sell</option>
                                     <option value="rent">Rent</option>
                                     <option value="buy">Buy</option>
@@ -70,10 +69,10 @@ function Add (){
                             </div>
                                 <div>
                                 <label htmlFor="type">Choose type: </label>
-                                    <select name="type" id="type" defaultValue={cardOne.type}>
+                                    <select name="type" id="type" value = {type} onChange = {(e)=> setType(e.target.value)}>
                                     <option value="house">House</option>
                                     <option value="flat">Flat</option>
-                                    <option value="room">Room</option>
+                                    {action==="rent"?<option value="room">Room</option>:""}
                                     </select>
                                 </div>
                                 
