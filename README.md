@@ -1,5 +1,4 @@
-# ReactJS_exam_august_22
-
+# Properties announcement site
 The Node.js and ReactJS app
 
 Backend:
