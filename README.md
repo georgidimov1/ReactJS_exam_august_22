@@ -1,8 +1,7 @@
-# ReactJS_exam_august_22
-
+# Properties announcement site
 The Node.js and ReactJS app
 
-Back end:
+Backend:
 Created by Node (Express) and MongoDB
 You should have installed:
 1. Node JS
@@ -12,12 +11,12 @@ Go to the rest-api directory and:
 1. run npm install - for installing dependencies
 2. run npm start -for starting the application
 
-The backend is working on: port 5000
+The backend is working on: http://localhost:5000
 
-Front end:
+Frontend:
 Created by React JS
 Go to the spa folder and:
 1. run npm install - for instaling dependancies
 2. run npm start -for starting the application
 
-The backend is working on: http://localhost:3000
+The frontend is working on: http://localhost:3000
