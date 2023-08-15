@@ -6,7 +6,7 @@ const propertySchema = new Schema({
     image: {type: String},
     type: {type: String, required: true},
     city: {type: String, required: true},
-    rooms: { type: Number, min: 1, max: 10 }, 
+    rooms: { type: Number, min: 1, max: 9}, 
     info: {type: String},
     price: {type: String},
     owner: {type: String},
