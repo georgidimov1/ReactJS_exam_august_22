@@ -65,7 +65,11 @@ function Add (){
                             <div>
                                     <label htmlFor="image">Choose a property picture:</label>
                                     <input type="text" id="image" 
+<<<<<<< Updated upstream:spa/src/Add/Add.js
                                     name="image" accept="image/png, image/jpeg" defaultValue={cardOne.image}/>
+=======
+                                    name="image" accept="image/png, image/jpeg" required/>
+>>>>>>> Stashed changes:SPA/src/Add/Add.js
                             </div>
                                 <div>
                                 <label htmlFor="type">Choose type: </label>
