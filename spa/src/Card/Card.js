@@ -31,11 +31,7 @@ function Card(props){
 
  return (
      <div className="card column">
-<<<<<<< Updated upstream:spa/src/Card/Card.js
-         <img className="card-image" alt= "" src={props.image}></img>
-=======
          <img className="card-image" src= {props.image}/>
->>>>>>> Stashed changes:SPA/src/Card/Card.js
          <div className="card-text">
              <span className="value">{props.city.toUpperCase()}</span>
              <h2>{props.action.toUpperCase()}</h2>
