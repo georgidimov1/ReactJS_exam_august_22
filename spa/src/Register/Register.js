@@ -2,13 +2,27 @@ import { useHistory} from "react-router-dom";
 import {useState} from 'react';
 import React from 'react';
 import services from "../services/services.js";
+import  validator  from 'validator';
+
 function Register (){
     const  history = useHistory();
     const [error, setError]=useState(false)
+    const [disabledButton, setDisabledButton] = useState("");
+    const [message, setMessage] = useState("");
 
     function handleClick() {
       history.push("/login");
     }
+    function onChangeHandler(e){
+        if (validator.isEmail(e.target.value)) {
+            setMessage("Thank you");
+            setDisabledButton("")
+          } else {
+            setMessage("Please, enter valid Email!");
+            setDisabledButton("disabled")
+          }
+    }
+
     function onCreateSubmitHandler(e){
         e.preventDefault();
         const username = e.target.username.value;
@@ -34,7 +48,7 @@ function Register (){
                             <h2 className="title">Register</h2>
                             <form onSubmit={onCreateSubmitHandler}>
                                 <div className='password'>
-                                    <input className='input' type="text" placeholder="Username*" name="username" required/>
+                                    <input className='input' type="text" placeholder="mail@example.com*" name="username" onChange = {onChangeHandler} required/>
                                 </div>
                       
                                 <div className='password'>
@@ -44,8 +58,9 @@ function Register (){
                                     <input className='input' type="password" placeholder="Confirm Password*" name="rePassword" required/>
                                 </div>
                                 <div className='err'>{error?'Passwords do not match':''}</div>
+                                <div className='err'>{message}</div>
                                 <div className="p-t-10">
-                                    <button className="btn">Submit</button>
+                                    <button className="btn" disabled={disabledButton}>Submit</button>
                                 </div>
                             </form>
                         </div>

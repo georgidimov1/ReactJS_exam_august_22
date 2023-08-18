@@ -3,24 +3,22 @@ import {useHistory} from "react-router-dom";
 import {useEffect, useState} from 'react';
 import React from 'react';
 import services from "../services/services.js";
+import  validator  from 'validator';
 
 
 function Login (){
-    const [user, setUser] = useState("")
-    const [message, setMessage] = useState("");
-
+     const [message, setMessage] = useState("");
+    const [disabledButton, setDisabledButton] = useState("");
    
 
     function onChangeHandler(e){
-        setUser(e.target.value)
-        const regEx = /[a-z_.]+(@)[a-z]+(\.)+[a-z]{0,4}(\.)?[a-z]{1,4}$/gim;
-        if (regEx.test(user.toLowerCase())) {
-           setMessage("");
-           } else if (!regEx.test(user) && user !== "") {
-                setMessage("Invalid email");
-           } else {
-               setMessage("");
-           }
+        if (validator.isEmail(e.target.value)) {
+            setMessage("Thank you");
+            setDisabledButton("")
+          } else {
+            setMessage("Please, enter valid Email!");
+            setDisabledButton("disabled")
+          }
     }
 
     
@@ -54,7 +52,7 @@ function Login (){
                             <form onSubmit={onLoginSubmitHandler}>
                             <div className="label_ek1">Username*:</div>
                                 <div className='password'>
-                                    <input className='input' type="text" placeholder="mail@example.com" name="username" value = {user} onChange = {onChangeHandler} required />
+                                    <input className='input' type="text" placeholder="mail@example.com" name="username" onChange = {onChangeHandler} required />
                                 </div>
                                 <div className='err'>{message}</div>
                                 <div className="label_ek1">Password*:</div>
@@ -62,7 +60,7 @@ function Login (){
                                     <input className='input' type="password" placeholder="Password*" name="password" required/>
                                 </div>
                               
-                                <button className="btn">Submit</button>
+                                <button className="btn" disabled={disabledButton}>Submit</button>
                                                 
                             </form>
                             </div>
