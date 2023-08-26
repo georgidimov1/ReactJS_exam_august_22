@@ -18,6 +18,8 @@
     padding: 8px;
     font-size:1em;
     margin: 10px;
+    display:flex;
+    align-items: center;
   }
   .input{
     background:#ecf0f1;
@@ -26,7 +28,8 @@
     color: black;
     font-size:1em;
     border-radius:4px;
-    width:100%
+    width:100%;
+    margin-left: 0;
   }
   .btn{
     background:rgba(38,102,140,255);
@@ -57,4 +60,9 @@
     line-height: 16px;
     letter-spacing: 0.007px;
     color:#26668c;
+    display: block;
+  }
+  .input_main {
+    display:flex;
+    align-items: center;
   }

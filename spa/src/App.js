@@ -29,7 +29,8 @@ function App() {
           backgroundImage: 'url(/home-background.jpg)'
         }}
         >
-         <Router>
+          <div >
+          <Router>
              <Header {...authData}/>
              <ErrorBoundary>
                <Switch>
@@ -51,6 +52,8 @@ function App() {
             </ErrorBoundary>
         </Router>
           <Footer/>
+          </div>
+
         </div>
       </LoginContext.Provider>
   );

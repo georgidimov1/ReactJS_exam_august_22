@@ -33,6 +33,7 @@ function Add (){
             'price': e.target.price.value,
             'owner': sessionStorage.getItem("userId")
         }
+        console.log(propertyData.rooms)
 
          if(params.id){
             services.editOne(params.id, propertyData)
@@ -81,8 +82,11 @@ function Add (){
                                     <input className='input' type="text" name="city" defaultValue={cardOne.city} id="city" required/>
                                 </div>
                                 <div>
-                                <label htmlFor="rooms">Number of rooms*: </label>
-                                    <input className='input' type="number" name="rooms" id="rooms" defaultValue={cardOne.rooms} required min="1" max="10"/>
+                                {type==="room"&&action==="rent"?<label>Number of rooms*: 
+                                    <input className='input' type="number" name="rooms" id="rooms" defaultValue={'1'} required disabled="disabled"/>
+                                </label>:<label>Number of rooms*: 
+                                    <input className='input' type="number" name="rooms" id="rooms" defaultValue={cardOne.rooms||'1'} required min="1" max="10"/>
+                                </label>}                                  
                                 </div>
                                 <div>
                                 <label htmlFor="info">Additional information: </label>

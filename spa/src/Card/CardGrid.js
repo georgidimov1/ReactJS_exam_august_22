@@ -29,7 +29,9 @@ const params = useParams()
         return (
          <div className='gridMain'>
       
-           {params.id?cardsData.filter(data => data.owner === params.id).map((x)=>{ return(<Card key={x._id}{...x}/>)}):cardsData.map((x)=>{ return(<Card key={x._id}{...x}/>)})}
+           {params.id&&cardsData?
+           cardsData.filter(data => data.owner === params.id).map((x)=>{ return(<Card key={x._id}{...x}/>)}):
+           cardsData.map((x)=>{ return(<Card key={x._id}{...x}/>)})}
               
        
         </div>

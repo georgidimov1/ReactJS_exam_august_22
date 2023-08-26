@@ -4,19 +4,21 @@ import {useEffect, useState} from 'react';
 import React from 'react';
 import services from "../services/services.js";
 import  validator  from 'validator';
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCheckCircle,faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 
 
 function Login (){
-     const [message, setMessage] = useState("");
+     const [check, setCheck] = useState("");
     const [disabledButton, setDisabledButton] = useState("");
    
 
     function onChangeHandler(e){
         if (validator.isEmail(e.target.value)) {
-            setMessage("Thank you");
+            setCheck(<FontAwesomeIcon icon={faCheckCircle } color="green"/>);
             setDisabledButton("")
           } else {
-            setMessage("Please, enter valid Email!");
+            setCheck(<FontAwesomeIcon icon={faTimesCircle } color="red"/>);
             setDisabledButton("disabled")
           }
     }
@@ -50,14 +52,16 @@ function Login (){
                          <div className="body">
                             <h2 className="title">Login</h2>
                             <form onSubmit={onLoginSubmitHandler}>
-                            <div className="label_ek1">Username*:</div>
-                                <div className='password'>
-                                    <input className='input' type="text" placeholder="mail@example.com" name="username" onChange = {onChangeHandler} required />
+                                <div className='input_main'>
+                                <label className='label_ek1'>
+                                Username*: <input className='input' type="text" placeholder="mail@example.com" name="username" onChange = {onChangeHandler} required />
+                                </label>
+                                <div className='err'>{check}</div>
                                 </div>
-                                <div className='err'>{message}</div>
-                                <div className="label_ek1">Password*:</div>
-                                <div className='password'>
-                                    <input className='input' type="password" placeholder="Password*" name="password" required/>
+                                <div className='input_main'>
+                                <label className='label_ek1'>
+                                Password*: <input className='input' type="password" placeholder="Password*" name="password" required/>
+                                </label>
                                 </div>
                               
                                 <button className="btn" disabled={disabledButton}>Submit</button>

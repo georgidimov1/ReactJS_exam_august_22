@@ -6,9 +6,12 @@ import './Header.css'
 import services from '../services/services'
 import {useEffect, useState} from 'react'
 import React from 'react';
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faHome, faSignIn, faSignOut, faUser} from '@fortawesome/free-solid-svg-icons'
 
 
 function Header(props){
+    console.log(props)
    const [isStateAuth, setAuth] = useState(0);
    let history = useHistory();
    function handleClick() {
@@ -28,7 +31,8 @@ function Header(props){
         //console.log(`useEffect:${isStateAuth}`)
 
    },[props.token, isStateAuth])
-   
+
+
      return (
     <div className="header">
     <div>
@@ -41,20 +45,27 @@ function Header(props){
     </div>
     <div>
      {isStateAuth===true?
-             <nav>
-                     <p className="nav"><Link to="/">Home</Link></p>
-                     <p className="nav"><Link to="/user" >Hello, {props.username}</Link> </p>
+             <nav>  
+                <div className="left nav">
+                    <p className="nav"><Link to="/"><FontAwesomeIcon icon={faHome} /></Link></p>
                      <p className="nav"><Link to={`/myproperties/${props._id}`}>My ads</Link></p>
                      <p className="nav"><Link to="/addproperty">Add </Link></p>
-                     <p className="nav" align="right"><Link to="/logout" onClick={onClickLogoutHandler}>Logout</Link></p>
+                </div>
+                <div className="right nav">
+                     <p className="nav"><Link to={`/user/details/${props._id}`} ><FontAwesomeIcon icon={faUser} /></Link> </p>
+                     <p className="nav" align="right"><Link to="/logout" onClick={onClickLogoutHandler}><FontAwesomeIcon icon={faSignOut}/></Link></p>
+                </div>
+           
              </nav>:
              <nav>
-                     <p className="nav"><Link to="/">Home</Link></p>
-                     <p></p>
-                     <p></p>
-                     <p className="nav"><Link to="/register">Register</Link> </p>
-                     <p className="nav"><Link to="/login" >Login</Link></p>
-             </nav>
+                <div className="left nav">
+                    <p className="nav"><Link to="/"><FontAwesomeIcon icon={faHome} /></Link></p>
+                </div>
+                <div className="right nav">
+                    <p className="nav"><Link to="/register">Register</Link> </p>
+                     <p className="nav"><Link to="/login" ><FontAwesomeIcon icon={faSignIn} /></Link></p>
+                </div>
+            </nav>
           }
      </div>
      </div>

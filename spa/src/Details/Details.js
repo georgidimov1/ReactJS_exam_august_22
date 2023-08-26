@@ -5,31 +5,31 @@ import {
 } from 'react'
 import services from '../services/services'
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 
 function Details(props){
+    const params = useParams();
     const [data, setData] = useState(0);
-    const [likes, setCount] = useState();
-
-    
-   
+    // const [likes, setCount] = useState();   
     useEffect(()=>{
-services.getOne(props.match.params.id)
+services.getUser(params.id)
 .then(res => 
     {setData(res);
-    setCount(res.likes?res.likes:0);}
+    console.log(res)
+}
     )
 .catch((e)=>{throw new Error(e)})
-    },[props])
-let likesInitalValue = Number(data.likes);
-console.log(likesInitalValue)
+    },[props, params.id])
+// let likesInitalValue = Number(data.likes);
+// console.log(likesInitalValue)
 
   function onLikeButtonClickHander(){
-      let currentLikes = likes+1; 
-     setCount(currentLikes)
-services.postLikes(props.match.params.id,{...data, "likes":currentLikes})
-.then(data => console.log(data))
-.catch((e)=>{throw new Error(e)})
+//       let currentLikes = likes+1; 
+//      setCount(currentLikes)
+// services.postLikes(props.match.params.id,{...data, "likes":currentLikes})
+// .then(data => console.log(data))
+// .catch((e)=>{throw new Error(e)})
     }
   
 return (
@@ -38,13 +38,13 @@ return (
            <div className="card card-3">
               <div className="card-heading"></div>
               <div className="card-body">
-              <img src={data._filename} width="500rem" alt ="profile" class="center"/>
+              <img src={data} width="500rem" alt ="profile" className="center"/>
               <h2 className="title">Name: {data.username}</h2>
-                <h2 className="title">Zodiac sign: {data.zodiac}</h2> 
+                <h2 className="title">Zodiac sign: none </h2> 
           
                 {sessionStorage.getItem("userId")?
                 <div>
-                <p>Likes: {likes}</p>
+                {/* <p>Likes: {likes}</p> */}
                 <button className="btn btn--pill btn--green" onClick={onLikeButtonClickHander}>Like</button>
                 </div>
                 :<div></div>
